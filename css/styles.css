@@ -1,0 +1,255 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES ===============*/
+:root {
+  /*========== Colors ==========*/
+  --first-color: hsl(30, 16%, 50%);
+  --text-color: #fff;
+  --text-color-black: hsl(30, 8%, 15%);
+  --body-color: hsl(30, 100%, 98%);
+
+  /*========== Fonts and typography ==========*/
+  --body-font: "Poppins", sans-serif;
+  --h3-font-size: 1rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+  :root {
+    --h3-font-size: 1.125rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+
+/*=============== BASE / RESET ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--body-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== GALLERY ===============*/
+.gallery {
+  height: 90vh;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+
+.footer {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--first-color);
+  color: white;
+}
+.footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+.gallery_card {
+  position: relative;
+  width: 208px;
+  height: 268px;
+  border-radius: 3rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.gallery_image,
+.gallery_card::after,
+.gallery_data {
+  position: absolute;
+}
+
+.gallery_image {
+  color: var(--first-color);
+  inset: 0;
+  margin: auto;
+  transition: transform 0.3s;
+}
+
+.gallery_card::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 32%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  top: 0;
+  z-index: 1;
+}
+
+.gallery_data {
+  bottom: 1.5rem;
+  left: 1.75rem;
+  z-index: 5;
+}
+
+.gallery_title,
+.gallery_sbtitle {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.gallery_title {
+  font-size: var(--h3-font-size);
+}
+
+.gallery_subtitle {
+  font-size: var(--smaller-font-size);
+}
+
+.gallery_overflow {
+  position: relative;
+}
+
+.gallery_thumbnail {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.gallery_thumbnail_image {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+/* Swiper class */
+.gallery_cards,
+.gallery_thumbs {
+  width: 260px;
+}
+
+.gallery_cards:hover .gallery_image {
+  transform: scale(1.1);
+}
+
+.gallery .swiper-wrapper {
+  padding-bottom: 2.5rem;
+}
+
+.gallery_thumbs {
+  height: 132px;
+  padding-top: 2rem;
+  /* display: flex;
+  align-items: center; */
+}
+
+/* Active thumbnail */
+
+.swiper-slide-active .gallery_thumbnail {
+  transform: translateY(-1.25rem) scale(1.2);
+}
+
+/* Rotate thumbnail */
+.swiper-slide-next .gallery_thumbnail {
+  transform: rotate(15deg);
+}
+.swiper-slide-prev .gallery_thumbnail {
+  transform: rotate(-15deg);
+}
+
+/* Sliding numbers */
+.swiper-pagination-fraction {
+  font-size: var(--small-font-size);
+  letter-spacing: -1px;
+  font-weight: 500;
+  color: var(--first-color);
+  bottom: 0;
+}
+
+/* Arrow buttons */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "";
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  font-size: 1.5rem;
+  color: var(--text-color-black);
+  top: 5.5rem;
+  transition: 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: var(--first-color);
+}
+.swiper-button-next {
+  right: -1.3rem;
+  transform: rotate(15deg);
+}
+.swiper-button-prev {
+  left: -1.3rem;
+  transform: rotate(-15deg);
+}
+
+/* Other swiper settings */
+
+.gallery_cards::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.swiper-horizontal.swiper-css-mode > .swiper-wrapper {
+  scroll-snap-type: initial;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+
+@media screen and (max-width: 320px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  .gallery_card {
+    width: 250px;
+    height: 330px;
+  }
+  .gallery_thumbnail {
+    width: 65px;
+    height: 65px;
+  }
+
+  .gallery_cards,
+  .gallery_thumbs {
+    width: 280px;
+  }
+}
